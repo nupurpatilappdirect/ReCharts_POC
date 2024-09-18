@@ -20,6 +20,17 @@ app.get('/api/data', (req, res) => {
   res.json(data);
 });
 
+app.put('/api/updateData', (req, res) => {
+  const { layout } = req.body;
+
+  if (!layout || !Array.isArray(layout)) {
+    return res.status(400).json({ message: 'Invalid layout data' });
+  }
+  data.layout = layout;
+  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), 'utf8');
+  res.json({ message: 'Layout updated successfully', layout: data.layout });
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
