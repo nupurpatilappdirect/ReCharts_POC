@@ -1,13 +1,24 @@
-import React, { useEffect, useState } from 'react';
 import GridLayout from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
-import AreaChart from './AreaChart';
-import BarChart from './BarChart';
-import LineChart from './LineChart';
 import { useQuery } from '@tanstack/react-query';
 import { fetchData } from './utils/https';
 import ErrorBlock from './ErrorBlock';
+import Card from './Card';
+
+const renderData = [{
+  id:"a",
+  title: "Area Chart",
+},
+{
+  id:"b",
+  title: "Bar Chart",
+},
+{
+  id:"c",
+  title: "Line Chart",
+}
+]
 
 const Grid = () => {
   const { data, isPending, isError } = useQuery({
@@ -36,7 +47,8 @@ const Grid = () => {
       message={"Loading Data"}></ErrorBlock>}
       {isError && <ErrorBlock  title="An error occurred"
       message={"Failed to fetch data"}></ErrorBlock>}
-     {data && <GridLayout
+     {data && 
+     <GridLayout
       className="layout"
       layout={data.layout}
       cols={12}
@@ -44,10 +56,13 @@ const Grid = () => {
       width={1200}
       onLayoutChange={handleLayoutChange}
     >
-      <div key="a"><AreaChart /></div>
-      <div key="b"><BarChart /></div>
-      <div key="c"><LineChart /></div>
-    </GridLayout>}
+      {renderData.map((mapData)=>{
+        return (<div key={mapData.id}>
+          <Card id={mapData.id} title={mapData.title}/>
+        </div>)
+      })}
+    </GridLayout>
+    }
     </div>
   );
 };

@@ -1,0 +1,17 @@
+#titlecard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+#Card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#gborder {
+    border-color: blue;
+}
