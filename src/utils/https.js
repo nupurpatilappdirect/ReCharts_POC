@@ -1,3 +1,7 @@
+import { QueryClient } from "@tanstack/react-query";
+
+export const queryClient = new QueryClient();
+
 export const fetchData = async () => {
     let url = 'http://localhost:3001/api/data';
   
@@ -12,4 +16,14 @@ export const fetchData = async () => {
     // }
   
     return await response.json();
+  }
+
+  export const UpdateData = async (updatedLayout) => {
+    fetch("http://localhost:3001/api/updateData", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ layout: updatedLayout }),
+    })
   }

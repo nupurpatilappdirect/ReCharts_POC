@@ -16,7 +16,7 @@ function App() {
     <ReactQueryDevtools initialIsOpen={false} />
     <MantineProvider>
     <div className="App">
-    <Grid></Grid>
+    <Grid />
    </div>
    </MantineProvider>
    </QueryClientProvider>
