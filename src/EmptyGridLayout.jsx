@@ -21,7 +21,7 @@ const generateGridLayout = (numRows, numCols) => {
   return layout;
 };
 
-const EmptyGrid = ({ rows=10,column=12 }) => {
+const EmptyGrid = ({ rows=24,column=12 }) => {
   const layout = generateGridLayout(rows,column);
 
   return (
@@ -31,12 +31,12 @@ const EmptyGrid = ({ rows=10,column=12 }) => {
       // breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
       // cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
       cols={12}
-      rows={10}
-      rowHeight={70}
-      width={1200}
+      rows={24}
+      rowHeight={30}
+      width={600}
       isDraggable={false}
       isResizable={false}
-      items={500}
+      // items={500}
     >
       {layout.map((item) => (
         <div key={item.i} className="empty-grid-item">
